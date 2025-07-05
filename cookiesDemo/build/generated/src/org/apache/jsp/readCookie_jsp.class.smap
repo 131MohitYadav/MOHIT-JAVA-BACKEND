@@ -1,0 +1,12 @@
+SMAP
+readCookie_jsp.java
+JSP
+*S JSP
+*F
++ 0 readCookie.jsp
+readCookie.jsp
+*L
+1,11:44
+13,13:56
+25,3:69
+*E

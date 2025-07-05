@@ -1,0 +1,16 @@
+SMAP
+viewstudent_jsp.java
+JSP
+*S JSP
+*F
++ 0 viewstudent.jsp
+viewstudent.jsp
+*L
+5,32:47
+38,5:81
+42,2:86
+44,12:88,3
+56,3:124
+59,2:128
+60,6:130
+*E
