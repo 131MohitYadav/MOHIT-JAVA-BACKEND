@@ -19,6 +19,10 @@ public class T5 extends Thread {
     public static void main(String args[]){
         T5  t5 = new T5();
         t5.start();
+        for(int i = 1;  i <= 5; i++){
+            System.out.println("main Thread: " + i);
+        
+    }
         
     }
     
