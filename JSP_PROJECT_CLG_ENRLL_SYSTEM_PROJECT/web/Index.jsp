@@ -1,319 +1,291 @@
-<%-- 
-    Document   : Index
-    Created on : 24 Mar, 2025, 3:37:24 PM
-    Author     : yadav
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Webpage Design</title>
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    
-    <style>
-        /* Reset and Global Layout */
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <title>College Enrollment System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
-        body {
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            color: black;
-        }
+  <style>
+    /* Reset & Base Layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        /* Navbar */
-        .navbar {
-            width: 100%;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
 
-        .logo {
-            color: darkorange;
-            font-size: 35px;
-            font-weight: bold;
-        }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 30px;
+      height: 75px;
+    }
 
-        .menu ul {
-            display: flex;
-            list-style: none;
-        }
+    .logo {
+      color: darkorange;
+      font-size: 35px;
+      font-weight: bold;
+    }
 
-        .menu ul li {
-            margin: 0 20px;
-        }
+    .menu ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-        .menu ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .menu ul li a:hover {
-            color: orange;
-        }
+    .menu ul li a:hover {
+      color: orange;
+    }
 
-        .btn {
-            background: orange;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            text-decoration: none;
-        }
+    .login-buttons {
+      display: flex;
+      gap: 10px;
+    }
 
-        .btn30 {
-            background-color: white;
-            color: blue;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 15px;
-            margin-left: 280px;
-            font-size: 14px;
-            text-decoration: none;
-        }
+    .btn, .btn30 {
+      padding: 8px 15px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
 
-        .btn:hover {
-            background: white;
-            color: red;
-        }
+    .btn {
+      background-color: orange;
+      color: white;
+    }
 
-        .btn30:hover {
-            background-color: blue;
-            color: white;
-        }
+    .btn:hover {
+      background-color: white;
+      color: red;
+    }
 
-        /* Main Content */
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            background: url('images/clg5.jpeg') no-repeat center center;
-            background-size: cover;
-            position: relative;
-        }
+    .btn30 {
+      background-color: white;
+      color: blue;
+    }
 
-        .content h1 {
-            font-size: 50px;
-            color: whitesmoke;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+    .btn30:hover {
+      background-color: blue;
+      color: white;
+    }
 
-        .content span {
-            color: red;
-            font-weight: bold;
-        }
+    /* Main Section */
+    .content {
+      flex: 1;
+      background: url('images/clg5.jpeg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 30px;
+    }
 
-        .content p {
-            padding: 5px;
-            border-radius: 5px;
-            color: whitesmoke;
-            font-weight: bold;
-        }
+    .content h1 {
+      font-size: 50px;
+      font-weight: bold;
+      color: whitesmoke;
+    }
 
-        .cn {
-            background: orange;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-        }
+    .content span {
+      color: red;
+    }
 
-        .cn:hover {
-            background: white;
-        }
+    .content p {
+      font-weight: bold;
+      color: whitesmoke;
+    }
 
-        /* Login Form */
-        .form {
-            width: 360px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            position: absolute;
-            top: 120px;
-            right: 50px;
-            text-align: center;
-        }
+    .cn {
+      background-color: orange;
+      color: black;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .form h2 {
-            background: white;
-            color: black;
-            padding: 10px;
-            border-radius: 10px;
-            transition: 0.4s;
-        }
+    .cn:hover {
+      background-color: white;
+    }
 
-        .form h2:hover {
-            background: orange;
-        }
+    /* Login Form */
+    .form {
+      position: absolute;
+      top: 20%;
+      right: 50px;
+      width: 360px;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+    }
 
-        .form input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 35px;
-            border: none;
-            border-bottom: 1px solid orange;
-            background: transparent;
-            color: white;
-            font-size: 16px;
-        }
+    .form h2 {
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
 
-        .btnn {
-            width: 100%;
-            background: orange;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            margin-top: 35px;
-            border: none;
-        }
+    .form input {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid orange;
+      color: white;
+      font-size: 16px;
+    }
 
-        .btnn:hover {
-            background: white;
-            color: orange;
-        }
+    .btnn {
+      width: 100%;
+      background: orange;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
 
-        .form a {
-            color: orange;
-            text-decoration: none;
-            margin-top: 35px;
-        }
+    .btnn:hover {
+      background: white;
+      color: orange;
+    }
 
-        .icons a {
-            color: white;
-            font-size: 25px;
-            margin: 10px;
-        }
+    .link {
+      margin-top: 15px;
+    }
 
-        .icons a:hover {
-            color: orange;
-        }
+    .link a {
+      color: orange;
+      text-decoration: none;
+    }
 
-        .link {
-            color: white;
-            margin-top: 15px;
-        }
+    .icons a {
+      color: white;
+      font-size: 22px;
+      margin: 10px;
+      display: inline-block;
+    }
 
-        a {
-            text-decoration: none;
-        }
+    .icons a:hover {
+      color: orange;
+    }
 
-        /* Footer */
-        footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
 
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
 
-        footer a:hover {
-            color: orange;
-        }
+    footer a:hover {
+      color: orange;
+    }
 
-        footer .social-icons a {
-            margin: 0 10px;
-            font-size: 20px;
-        }
-
-    </style>
+    footer .social-icons i {
+      margin: 0 10px;
+      font-size: 20px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">H . V . U </div>
-        
-        <div class="menu">
-            <ul>
-                <li><a href="#"><i class="fa-solid fa-home"></i> HOME</a></li>
-                <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
-                <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
-                <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
-                <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
-            </ul>
-        </div>
-
-        <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-        <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">H . V . U</div>
+    <div class="menu">
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-home"></i> HOME</a></li>
+        <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
+        <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
+        <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
+        <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
+      </ul>
     </div>
-    
-    
-    <!-- Main Content -->
-    <div class="content">
-        <h1>Welcome to <br><span>College Enrollment System</span></h1>
-        <p>Apply for admission and manage your enrollment process online</p>
-        <a href="enroll.jsp" class="cn">Enroll Now</a>
-
-        <!-- Login Form -->
-        <div class="form">
-            <h2>Student Login Here</h2>
-            <form action="logincontrol.jsp" method="post">
-                <input type="text" name="un" placeholder="Enter Username">
-                <input type="password" name="ps" placeholder="Enter Password">
-                <button class="btnn">Login</button>
-                <p class="link">Don't have an account?<br>
-                    <a href="register.jsp">Sign up here</a>
-                </p>
-                <p>Log in with</p>
-                <div class="icons">
-                    <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="https://www.google.com"><i class="fa-brands fa-google"></i></a>
-                    <a href="https://www.skype.com"><i class="fa-brands fa-skype"></i></a>
-                </div>
-            </form>
-        </div>
+    <div class="login-buttons">
+      <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
+      <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
     </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div style="max-width: 1200px; margin:auto; display: flex; flex-direction: column; align-items: center;">
-            <p style="margin: 10px 0;">&copy; 2025 H.V.U College. All Rights Reserved.</p>
-            <div style="display: flex; gap: 15px;">
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms of Service</a> |
-                <a href="contact.jsp">Contact Us</a>
-            </div>
-            <div class="social-icons" style="margin-top: 10px;">
-                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
-            </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Welcome to <br /><span>College Enrollment System</span></h1>
+    <p>Apply for admission and manage your enrollment process online</p>
+    <a href="enroll.jsp" class="cn">Enroll Now</a>
+
+    <!-- Login Form -->
+    <div class="form">
+      <h2>Student Login Here</h2>
+      <form action="logincontrol.jsp" method="post">
+        <input type="text" name="un" placeholder="Enter Username" />
+        <input type="password" name="ps" placeholder="Enter Password" />
+        <button class="btnn">Login</button>
+        <p class="link">Don't have an account?<br /><a href="register.jsp">Sign up here</a></p>
+        <p>Log in with</p>
+        <div class="icons">
+          <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://google.com"><i class="fa-brands fa-google"></i></a>
+          <a href="https://skype.com"><i class="fa-brands fa-skype"></i></a>
         </div>
-    </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="contact.jsp">Contact Us</a>
+    </div>
+    <div class="social-icons" style="margin-top: 10px;">
+      <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </footer>
 
 </body>
 </html>
