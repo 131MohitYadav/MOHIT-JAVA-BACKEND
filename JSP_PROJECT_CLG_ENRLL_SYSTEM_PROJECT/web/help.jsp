@@ -1,254 +1,247 @@
-<%-- 
-    Document   : help
-    Created on : 28 Mar, 2025, 4:51:56 PM
-    Author     : Mohit Yadav
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Help - College Enrollment System</title>
-        
-           
-     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    
-        
-        <style>
-            
-           
-            
-              
-               * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help - College Enrollment System</title>
 
-/*        body {
-            font-family: Arial, sans-serif;
-            color: black;
-               background: linear-gradient(to right, #00c6ff, #0072ff);
-        }*/
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
-        /* Navigation Bar */
-        .navbar {
-            margin:0px;
-            width: 100%;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-center;
-            padding: 0 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            gap:40px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .logo {
-            color: darkorange;
-            font-size: 35px;
-            font-weight: bold;
-        }
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
 
-        .menu ul {
-            display: flex;
-            list-style: none;
-        }
+    body {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+    }
 
-        .menu ul li {
-            margin: 0 20px;
-        }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 30px;
+      flex-wrap: wrap;
+    }
 
-        .menu ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: darkorange;
+    }
 
-        .menu ul li a:hover {
-            color: orange;
-        }
+    .menu ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
 
-        /* Search Box */
-       
-        
-        
+    .menu ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
 
-        .btn {
-            background: orange;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .btn30{
-            background-color: white;
-            color: blue;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 15px;
-            margin-left: 280px;
-            font-size: 14px;
-        }
+    .menu ul li a:hover {
+      color: orange;
+    }
 
-        .btn:hover {
-            background: white;
-            color: red;
-        }
-        .btn30:hover{
-            background-color: blue;
-            color:white;
-        }
+    .login-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
-        
-            
-            /* Apply a gradient background */
-            body {
-                background: linear-gradient(to right, #4facfe, #00f2fe);
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin: 0;
-                padding: 0;
-                color: white;
-            }
+    .btn, .btn30 {
+      padding: 8px 15px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-            /* Style the main heading */
-            h1 {
-                color:black;
-                margin-top: 50px;
-                font-size: 36px;
-                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            }
+    .btn {
+      background: orange;
+      color: white;
+    }
 
-            /* Style the paragraph */
-            p {
-                font-size: 18px;
-                margin-bottom: 20px;
-            }
+    .btn:hover {
+      background: white;
+      color: red;
+    }
 
-            /* Style the button container */
-            .btn-container {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                margin-top: 30px;
-            }
+    .btn30 {
+      background: white;
+      color: blue;
+    }
 
-            /* Style the buttons */
-            .help-btn {
-                background: white;
-                border: none;
-                padding: 14px 30px;
-                font-size: 16px;
-                font-weight: bold;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
+    .btn30:hover {
+      background: blue;
+      color: white;
+    }
 
-            /* Style the anchor inside button */
-            .help-btn a {
-                text-decoration: none;
-                color: #333;
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-            /* Add hover effect */
-            .help-btn:hover {
-                background: #ff9800;
-                color: white;
-            }
+    .main-content h1 {
+      color: black;
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
 
-            .help-btn:hover a {
-                color: white;
-            }
+    .info-box {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
 
-            /* Additional styling for clarity */
-            .info-box {
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 15px;
-                  background: linear-gradient(to left, #4facfe, #00f2fe);
-                border-radius: 10px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            }
-            
-            
-            a{
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        
-        
-        
-     <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">H . V . U </div>
-        
-        <div class="menu">
-            <ul>
-                <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
-                <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
-                <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
-                <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
-                <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
-            </ul>
-        </div>
+    .info-box p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 10px 0;
+    }
 
-        
-<!--            <input class="srch" type="search" placeholder="Type To Search">-->
-<a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-<a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
+    .info-box strong {
+      color: orange;
+    }
 
+    .btn-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
+    .help-btn {
+      background: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .help-btn:hover {
+      background: #ff9800;
+      color: white;
+    }
+
+    .help-btn a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .help-btn:hover a {
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: orange;
+    }
+
+    footer .social-icons a {
+      margin: 0 8px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">H . V . U</div>
+    <div class="menu">
+      <ul>
+        <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
+        <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
+        <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
+        <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
+        <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
+      </ul>
     </div>
-     
-        
-        
-        <h1>Help & Support</h1>
-        <div class="info-box">
-            <p>Welcome to the <strong style="color:orange">College Enrollment System</strong> help center.</p>
-            <p>If you need assistance with login, account recovery, or enrollment issues, choose the appropriate option below.</p>
-        </div>
-
-        <div class="btn-container">
-            <button class="help-btn"><a href="finduser.jsp">Student Help</a></button>
-            <button class="help-btn"><a href="finduser2.jsp">Faculty Help</a></button>
-        </div>
-        
-        
-           
-  <!-- Footer Section -->
-<footer style="background-color: rgba(0, 0, 0, 0.9); color: white; text-align: center; padding: 20px 0; margin-top: 260px;">
-    <div style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
-        
-        <p style="margin: 10px 0; color:white;">&copy; 2025 H.V.U College. All Rights Reserved.</p>
-        
-        <div style="display: flex; gap: 15px;">
-            <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
-            <a href="#" style="color: white; text-decoration: none;">Terms of Service</a> |
-            <a href="contact.jsp" style="color: white; text-decoration: none;">Contact Us</a>
-        </div>
-
-        <div class="social-icons" style="margin-top: 10px;">
-            <a href="https://www.facebook.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.twitter.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
+    <div class="login-buttons">
+      <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
+      <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
     </div>
-</footer>
-        
-        
-    </body>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Help & Support</h1>
+    <div class="info-box">
+      <p>Welcome to the <strong>College Enrollment System</strong> help center.</p>
+      <p>If you need assistance with login, account recovery, or enrollment issues, choose the appropriate option below.</p>
+    </div>
+    <div class="btn-container">
+      <a class="help-btn" href="finduser.jsp">Student Help</a>
+      <a class="help-btn" href="finduser2.jsp">Faculty Help</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="contact.jsp">Contact Us</a>
+    </div>
+    <div class="social-icons" style="margin-top: 10px;">
+      <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+</body>
 </html>
