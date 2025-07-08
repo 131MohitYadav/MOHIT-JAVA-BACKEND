@@ -1,24 +1,13 @@
-<%-- 
-    Document   : enroll
-    Created on : 4 Apr, 2025, 2:44:08 AM
-    Author     : yadav
---%>
-<%-- 
-    Document   : enroll
-    Created on : 28 Mar, 2025, 4:51:56 PM
-    Author     : Mohit Yadav
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Enroll - College Enrollment System</title>
-        
-     <!-- FontAwesome Icons -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Enroll - College Enrollment System</title>
+
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -26,17 +15,30 @@
             box-sizing: border-box;
         }
 
-        /* Navigation Bar */
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to left, #4facfe, #00f2fe);
+        }
+
+        /* Navbar */
         .navbar {
-            margin:0px;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 75px;
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
-            justify-content: space-center;
+            justify-content: space-between;
             padding: 0 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            gap:40px;
+            z-index: 1000;
         }
 
         .logo {
@@ -74,65 +76,60 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 14px;
-        }
-        .btn30{
-            background-color: white;
-            color: blue;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 15px;
-            margin-left: 280px;
-            font-size: 14px;
+            text-decoration: none;
+            margin-left: 10px;
         }
 
         .btn:hover {
             background: white;
             color: red;
         }
-        .btn30:hover{
-            background-color: blue;
-            color:white;
-        }
 
-        /* Background & Content Styling */
-        body {
-            background: linear-gradient(to left, #4facfe, #00f2fe);
-            font-family: Arial, sans-serif;
+        .content {
+            flex: 1;
+            margin-top: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             text-align: center;
-            margin: 0;
-            padding: 0;
             color: white;
         }
 
-        /* Main Heading */
-        h1 {
-            color:black;
-            margin-top: 100px;
-            font-size: 36px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Info Box */
-        .info-box {
+        .box {
             max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-             background: linear-gradient(to right, #4facfe, #00f2fe);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            font-weight: bold;
-            font-size:20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
 
-        /* Button Container */
+        .box h1 {
+            color: black;
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .info-text {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .info-text strong {
+            color: orange;
+        }
+
         .btn-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            margin-top: 30px;
         }
 
-        /* Button Styling */
         .enroll-btn {
             background: white;
             border: none;
@@ -142,14 +139,9 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-
-        .enroll-btn a {
             text-decoration: none;
             color: #333;
-            display: block;
-            width: 100%;
-            height: 100%;
+            display: inline-block;
         }
 
         .enroll-btn:hover {
@@ -157,21 +149,34 @@
             color: white;
         }
 
-        .enroll-btn:hover a {
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
             color: white;
+            text-align: center;
+            padding: 20px 0;
         }
 
-        a {
+        footer a {
+            color: white;
+            margin: 0 10px;
             text-decoration: none;
         }
+
+        footer a:hover {
+            color: orange;
+        }
+        
+          footer p{
+            margin: 20px;
+        }
+
     </style>
-    </head>
-    <body>
-        
-     <!-- Navbar -->
+</head>
+<body>
+
+    <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">H . V . U </div>
-        
+        <div class="logo">H . V . U</div>
         <div class="menu">
             <ul>
                 <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
@@ -181,43 +186,44 @@
                 <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
             </ul>
         </div>
-
-        <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-        <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
-    </div>
-     
-    <!-- Enrollment Section -->
-    <h1>Enroll Student & Faculty</h1>
-    <div class="info-box">
-        <p>Welcome to the <strong style="color:orange;">College Enrollment System</strong> Enrollment Page.</p>
-        <p>If you want to enroll as a Student or Faculty, please select the appropriate option below.</p>
+        <div>
+            <a href="Facultylogin.jsp" class="btn">FACULTY LOGIN</a>
+            <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
+        </div>
     </div>
 
-    <div class="btn-container">
-        <button class="enroll-btn"><a href="register.jsp">Enroll as Student</a></button>
-        <button class="enroll-btn"><a href="Facultyregister.jsp">Enroll as Faculty</a></button>
-    </div>
-           
-    <!-- Footer Section -->
-    <footer style="background-color: rgba(0, 0, 0, 0.9); color: white; text-align: center; padding: 20px 0; margin-top: 230px;">
-        <div style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
-            
-            <p style="margin: 10px 0; color:white;">&copy; 2025 H.V.U College. All Rights Reserved.</p>
-            
-            <div style="display: flex; gap: 15px;">
-                <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
-                <a href="#" style="color: white; text-decoration: none;">Terms of Service</a> |
-                <a href="contact.jsp" style="color: white; text-decoration: none;">Contact Us</a>
+    <!-- Page Content -->
+    <div class="content">
+        <div class="box">
+            <h1>Enroll Student & Faculty</h1>
+            <div class="info-text">
+                <p>Welcome to the <strong>College Enrollment System</strong> Enrollment Page.</p>
+                <p>If you want to enroll as a Student or Faculty, please select the appropriate option below.</p>
             </div>
+            <div class="btn-container">
+                <a href="register.jsp" class="enroll-btn">Enroll as Student</a>
+                <a href="Facultyregister.jsp" class="enroll-btn">Enroll as Faculty</a>
+            </div>
+        </div>
+    </div>
 
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="contact.jsp">Contact Us</a>
+            </div>
             <div class="social-icons" style="margin-top: 10px;">
-                <a href="https://www.facebook.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.twitter.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.linkedin.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
-        
-    </body>
+
+</body>
 </html>

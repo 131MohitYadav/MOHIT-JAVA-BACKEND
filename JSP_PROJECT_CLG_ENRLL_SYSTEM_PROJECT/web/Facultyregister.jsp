@@ -188,6 +188,9 @@
         footer a:hover {
             color: orange;
         }
+          footer p{
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
