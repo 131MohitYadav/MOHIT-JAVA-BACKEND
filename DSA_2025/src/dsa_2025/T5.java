@@ -8,6 +8,8 @@ package dsa_2025;
  *
  * @author apple
  */
+
+//  EXAMPLE 1 -> Multithreading Using extends Thread class
 public class T5 extends Thread {
     
     public void run(){
