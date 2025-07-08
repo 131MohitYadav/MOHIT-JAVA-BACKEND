@@ -97,14 +97,15 @@
     }
 
     /* Main Content */
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      text-align: center;
-    }
+   .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* vertical center */
+    align-items: center;        /* horizontal center */
+    padding: 20px;
+    text-align: center;
+}
 
     .main-content h1 {
       color: black;
