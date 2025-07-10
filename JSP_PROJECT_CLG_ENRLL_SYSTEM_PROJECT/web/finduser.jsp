@@ -1,63 +1,67 @@
-<%@ page import="com.mohit.dao.UsersDAO" %>
-<%@ page import="com.mohit.bean.UsersBean" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
     <title>Student Login Help - College Enrollment System</title>
-    
-     
-         
-     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
     <style>
-        /* Gradient Background */
-             
-               * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        body {
+        html, body {
+            height: 100%;
             font-family: Arial, sans-serif;
-            color: black;
-               background: linear-gradient(to right, #00c6ff, #0072ff);
+            background: linear-gradient(to right, #00c6ff, #0072ff);
         }
 
-        /* Navigation Bar */
+        /* --- NAVBAR --- */
         .navbar {
-            margin:0px;
-            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
             height: 75px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
             display: flex;
             align-items: center;
-            justify-content: space-center;
-            padding: 0 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            gap:40px;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .navbar-inner {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
             color: darkorange;
-            font-size: 35px;
+            font-size: 32px;
             font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .menu {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .menu ul {
             display: flex;
             list-style: none;
-        }
-
-        .menu ul li {
-            margin: 0 20px;
+            gap: 35px;
         }
 
         .menu ul li a {
             text-decoration: none;
             color: white;
             font-weight: bold;
+            font-size: 16px;
             transition: 0.3s;
         }
 
@@ -65,10 +69,11 @@
             color: orange;
         }
 
-        /* Search Box */
-       
-        
-        
+        .nav-right {
+            flex-shrink: 0;
+            display: flex;
+            gap: 10px;
+        }
 
         .btn {
             background: orange;
@@ -79,78 +84,72 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 14px;
-        }
-        .btn30{
-            background-color: white;
-            color: blue;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 15px;
-            margin-left: 280px;
-            font-size: 14px;
+            text-decoration: none;
         }
 
         .btn:hover {
             background: white;
             color: red;
         }
-        .btn30:hover{
-            background-color: blue;
-            color:white;
+
+        .btn30 {
+            background-color: white;
+            color: blue;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            text-decoration: none;
         }
 
-        
-        
-/*        
-        
-        body {
-            font-family: Arial, sans-serif;
-              background: linear-gradient(to right, #4facfe, #00f2fe);
+        .btn30:hover {
+            background-color: blue;
+            color: white;
+        }
 
-            margin: 0;
-            padding: 0;
+        /* --- CONTENT --- */
+        .content {
+            margin-top: 75px;
+            min-height: calc(100vh - 75px - 60px);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }*/
+            padding: 20px;
+        }
 
-        /* Centered Box with Lined Gradient */
         .container {
-            width: 50%;
-            background: linear-gradient(to left, #00c6ff, #0072ff);
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            backdrop-filter: blur(10px);
-            margin: 80px auto;
         }
 
-        /* Title Styling */
-        h2 {
-            color: #ffffff;
-            text-shadow: 2px 2px 8px #ff5733;
-            font-size: 26px;
+        .container h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
-        /* Form Styling */
         form {
-            margin:20px auto ;
+            margin: 20px auto;
         }
 
         label {
-            font-size: 18px;
-            color: #ffffff;
+            font-size: 16px;
             font-weight: bold;
+            color: #333;
         }
 
         input[type="text"] {
             padding: 8px;
             width: 220px;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 5px;
             outline: none;
+            margin-top: 8px;
         }
 
         input[type="submit"] {
@@ -162,13 +161,14 @@
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
         }
 
         input[type="submit"]:hover {
             background-color: #e65100;
         }
 
-        /* Table Styling */
         table {
             width: 100%;
             margin-top: 20px;
@@ -176,7 +176,7 @@
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             color: black;
         }
 
@@ -192,7 +192,6 @@
             font-size: 18px;
         }
 
-        /* Back Button */
         .back-btn {
             margin-top: 20px;
         }
@@ -207,127 +206,118 @@
             cursor: pointer;
         }
 
-        .back-btn a {
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-        }
-
         .back-btn button:hover {
             background-color: #1e88e5;
         }
-        
-        h3{
-            margin: 10px;
-        }
-        
-        a{
+
+        .back-btn a {
+            color: white;
             text-decoration: none;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: orange;
+        }
+
+        footer .social-icons i {
+            margin: 0 10px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    
-    
-     <!-- Navbar -->
+
+    <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">H . V . U </div>
-        
-        <div class="menu">
-            <ul>
-                <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
-                <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
-                <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
-                <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
-                <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
-            </ul>
+        <div class="navbar-inner">
+            <div class="logo">H . V . U</div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
+                    <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
+                    <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
+                    <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
+                    <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
+                <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
+            </div>
         </div>
-
-        
-<!--            <input class="srch" type="search" placeholder="Type To Search">-->
-<a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-<a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
-
-
     </div>
-    
-    
-    
-    
-    
-    
-    <div class="container">
-        <h2>🔍 Student Login Help</h2>
 
-        <!-- Search Form -->
-        <form method="post">
-            <label for="sid">Enter Login ID:</label>
-            <input type="text" id="lid" name="lid" required>
-            <input type="submit" value="Search">
-        </form>
+    <!-- Page Content -->
+    <div class="content">
+        <div class="container">
+            <h2>🔍 Student Login Help</h2>
+            <form method="post">
+                <label for="lid">Enter Login ID:</label><br>
+                <input type="text" id="lid" name="lid" required>
+                <input type="submit" value="Search">
+            </form>
+            <hr>
 
-        <hr>
+            <%
+                String lidStr = request.getParameter("lid");
+                if (lidStr != null && !lidStr.isEmpty()) {
+                    try {
+                        int lid = Integer.parseInt(lidStr);
+                        com.mohit.dao.UsersDAO studentDAO = new com.mohit.dao.UsersDAO();
+                        com.mohit.bean.UsersBean student = studentDAO.findById(lid);
 
-        <%
-            // Retrieve the Login ID from the request
-            String lidStr = request.getParameter("lid");
-
-            if (lidStr != null && !lidStr.isEmpty()) {
-                try {
-                    int lid = Integer.parseInt(lidStr);
-
-                    // Call findById() method
-                    UsersDAO studentDAO = new UsersDAO();
-                    UsersBean student = studentDAO.findById(lid);
-
-                    // If student exists
-                    if (student.getLid() != 0) {
-        %>
-                    <h3>Student Account Details</h3>
-                    <table>
-                       <tr><th>Name</th><td><%= student.getName() %></td></tr>
-                       <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
-                       <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
-                    </table>
-        <%
-                    } else {
-                        out.println("<p>❌ Student Not Found! Please check your ID.</p>");
+                        if (student.getLid() != 0) {
+            %>
+                        <h3>Student Account Details</h3>
+                        <table>
+                            <tr><th>Name</th><td><%= student.getName() %></td></tr>
+                            <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
+                            <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
+                        </table>
+            <%
+                        } else {
+                            out.println("<p>❌ Student Not Found! Please check your ID.</p>");
+                        }
+                    } catch (NumberFormatException e) {
+                        out.println("<p>⚠️ Invalid Login ID! Please enter a valid number.</p>");
                     }
-                } catch (NumberFormatException e) {
-                    out.println("<p>⚠️ Invalid Login ID! Please enter a valid number.</p>");
                 }
-            }
-        %>
+            %>
 
-        <!-- Back to Home Page Button -->
-        <div class="back-btn">
-            <button><a href="Index.jsp">🏠 Back to Home</a></button>
+            <div class="back-btn">
+                <button><a href="Index.jsp">🏠 Back to Home</a></button>
+            </div>
         </div>
     </div>
-        
-        <!-- Footer Section -->
-<footer style="background-color: rgba(0, 0, 0, 0.9); color: white; text-align: center; padding: 20px 0; margin-top: 260px;">
-    <div style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
-        
-        <p style="margin: 10px 0; color:white;">&copy; 2025 H.V.U College. All Rights Reserved.</p>
-        
-        <div style="display: flex; gap: 15px;">
-            <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
-            <a href="#" style="color: white; text-decoration: none;">Terms of Service</a> |
-            <a href="contact.jsp" style="color: white; text-decoration: none;">Contact Us</a>
-        </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
+        <div>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="contact.jsp">Contact Us</a>
+        </div>
         <div class="social-icons" style="margin-top: 10px;">
-            <a href="https://www.facebook.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.twitter.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-    </div>
-</footer>
-        
+    </footer>
 
-        
 </body>
 </html>
