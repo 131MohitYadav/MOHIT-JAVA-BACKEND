@@ -94,27 +94,27 @@
         }
 
         /* CONTENT */
-        .content {
-            flex: 1;
+        .main {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            flex: 1;
+            padding: 20px;
         }
 
         .container {
-            width: 650px;
-            max-width: 95%;
             background: linear-gradient(to left, #0072ff, #00c6ff);
-            padding: 35px 30px;
+            width: 100%;
+            max-width: 650px;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            text-align: center;
-            color: white;
-            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container h2 {
+        .header-label {
             background-color: rgba(255, 165, 0, 0.9);
             color: white;
             padding: 12px;
@@ -124,24 +124,27 @@
             text-shadow: 1px 1px 3px black;
         }
 
-        form {-
-            margin: 20px 0;
+        form {
+             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
         }
 
         label {
-            font-size: 16px;
+          font-size: 16px;
+            color: #333;
             font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
         }
 
         input[type="text"] {
-            padding: 10px;
+        padding: 10px;
             width: 80%;
+            max-width: 300px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
             outline: none;
-            margin-bottom: 15px;
         }
 
         input[type="submit"] {
@@ -262,9 +265,9 @@
     </div>
 
     <!-- CONTENT -->
-    <div class="content">
+    <div class="main">
         <div class="container">
-            <h2> Student Login Help</h2>
+            <h2 class ="header-label"> Student Login Help</h2>
             <form method="post">
                 <label for="lid">Enter Login ID:</label>
                 <input type="text" id="lid" name="lid" required><br>

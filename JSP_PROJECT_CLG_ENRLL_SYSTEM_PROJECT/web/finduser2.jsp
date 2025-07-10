@@ -14,13 +14,12 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            background: linear-gradient(to left, #ff7e5f, #feb47b);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Navbar */
         .navbar {
             width: 100%;
             height: 75px;
@@ -28,7 +27,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 30px;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.9);
             flex-wrap: wrap;
         }
 
@@ -47,7 +46,7 @@
         .menu ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -99,43 +98,57 @@
             color: white;
         }
 
-        /* Container */
-               .container {
-            width: 650px;
-            max-width: 95%;
-            background: linear-gradient(to left, #0072ff, #00c6ff);
-            padding: 35px 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            text-align: center;
-            color: white;
-            backdrop-filter: blur(8px);
-        }
-        h2 {
-            color: #6b1e00;
-            text-shadow: 2px 2px 6px #ffffff88;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        form {
-            margin: 20px auto;
+        /* CENTER the container in page body */
+        .main {
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
             align-items: center;
         }
 
+        .container {
+            background: linear-gradient(to right, #feb47b, #ff7e5f);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-label {
+            background-color: orange;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
         label {
-            font-size: 18px;
-            color: #ffffff;
+            font-size: 16px;
+            color: #333;
             font-weight: bold;
         }
 
         input[type="text"] {
             padding: 10px;
-            width: 250px;
-            border: none;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
             border-radius: 8px;
             outline: none;
         }
@@ -143,7 +156,7 @@
         input[type="submit"] {
             padding: 10px 20px;
             border: none;
-            background-color: #ff9800;
+            background-color: orange;
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -184,9 +197,9 @@
         }
 
         .back-btn button {
-            padding: 12px 25px;
-            color: white;
+            padding: 10px 20px;
             background-color: #3498db;
+            color: white;
             font-weight: bold;
             border-radius: 8px;
             border: none;
@@ -206,13 +219,8 @@
         }
 
         h3 {
-            margin: 10px;
-            color: #fff;
-            text-shadow: 1px 1px 4px #00000066;
-        }
-
-        a {
-            text-decoration: none;
+            margin: 15px 0 10px 0;
+            color: #333;
         }
 
         footer {
@@ -220,7 +228,6 @@
             color: white;
             text-align: center;
             padding: 20px 10px;
-            margin-top: auto;
         }
 
         footer a {
@@ -255,46 +262,43 @@
         <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
     </div>
 
-    <!-- Container -->
-    <div class="container">
-        <h2>🔍 Faculty Login Help</h2>
-
-        <!-- Search Form -->
-        <form method="post">
-            <label for="lid">Enter Login ID:</label>
-            <input type="text" id="lid" name="lid" required>
-            <input type="submit" value="Search">
-        </form>
-        <hr>
-
-        <%
-            String lidStr = request.getParameter("lid");
-            if (lidStr != null && !lidStr.isEmpty()) {
-                try {
-                    int lid = Integer.parseInt(lidStr);
-                    Users2DAO studentDAO = new Users2DAO();
-                    Users2Bean student = studentDAO.findById(lid);
-                    if (student.getLid() != 0) {
-        %>
-                    <h3>Faculty Account Details</h3>
-                    <table>
-                        <tr><th>Name</th><td><%= student.getName() %></td></tr>
-                        <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
-                        <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
-                    </table>
-        <%
-                    } else {
-                        out.println("<p>❌ Faculty Not Found! Please check your ID.</p>");
+    <!-- MAIN Content Centered -->
+    <div class="main">
+        <div class="container">
+            <div class="header-label"> Faculty Login Help</div>
+            <form method="post">
+                <label for="lid">Enter Login ID:</label>
+                <input type="text" id="lid" name="lid" required>
+                <input type="submit" value="Search">
+            </form>
+            <hr>
+            <%
+                String lidStr = request.getParameter("lid");
+                if (lidStr != null && !lidStr.isEmpty()) {
+                    try {
+                        int lid = Integer.parseInt(lidStr);
+                        Users2DAO studentDAO = new Users2DAO();
+                        Users2Bean student = studentDAO.findById(lid);
+                        if (student.getLid() != 0) {
+            %>
+                        <h3>Faculty Account Details</h3>
+                        <table>
+                            <tr><th>Name</th><td><%= student.getName() %></td></tr>
+                            <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
+                            <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
+                        </table>
+            <%
+                        } else {
+                            out.println("<p>❌ Faculty Not Found! Please check your ID.</p>");
+                        }
+                    } catch (NumberFormatException e) {
+                        out.println("<p>⚠️ Invalid Login ID! Please enter a valid number.</p>");
                     }
-                } catch (NumberFormatException e) {
-                    out.println("<p>⚠️ Invalid Login ID! Please enter a valid number.</p>");
                 }
-            }
-        %>
-
-        <!-- Back Button -->
-        <div class="back-btn">
-            <button><a href="Index.jsp">🏠 Back to Home</a></button>
+            %>
+            <div class="back-btn">
+                <button><a href="Index.jsp">Back to Home</a></button>
+            </div>
         </div>
     </div>
 
