@@ -124,7 +124,7 @@
             text-shadow: 1px 1px 3px black;
         }
 
-        form {
+        form {-
             margin: 20px 0;
         }
 
@@ -297,7 +297,7 @@
                 }
             %>
             <div class="back-btn">
-                <button><a href="Index.jsp">🏠 Back to Home</a></button>
+                <button><a href="Index.jsp"> Back to Home</a></button>
             </div>
         </div>
     </div>
