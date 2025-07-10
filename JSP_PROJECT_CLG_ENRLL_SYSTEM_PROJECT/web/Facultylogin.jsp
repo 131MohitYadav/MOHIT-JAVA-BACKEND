@@ -194,15 +194,11 @@
         footer a:hover {
             color: orange;
         }
-        
-        footer p{
-            margin: 20px;
-        }
     </style>
 </head>
 <body>
 
-    
+    <!-- Navbar -->
     <div class="navbar">
         <div class="logo">H . V . U </div>
         <div class="menu">
@@ -239,7 +235,7 @@
         </div>
     </div>
 
-   
+    <!-- Footer -->
     <footer>
         <div>
             <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>

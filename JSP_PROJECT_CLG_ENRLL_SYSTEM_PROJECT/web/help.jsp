@@ -192,6 +192,9 @@
       margin: 0 8px;
       font-size: 20px;
     }
+    footer p{
+        margin: 20px;
+    }
   </style>
 </head>
 

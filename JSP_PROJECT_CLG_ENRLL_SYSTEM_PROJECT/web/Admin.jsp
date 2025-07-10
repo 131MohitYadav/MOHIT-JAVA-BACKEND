@@ -13,33 +13,44 @@
       box-sizing: border-box;
     }
 
-     body {
+    body {
       height: 100%;
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #00c6ff, #0072ff);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-      /* Navbar */
-      .navbar {
+    /* Navbar - Centered */
+    .navbar {
+      display: flex;
+      justify-content: center; /* Center the navbar content */
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+     
+      height: 75px;
+    }
+
+    .navbar-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 10px 30px;
-      height: 75px;
+      width: 100%;
+      max-width: 1200px; /* Limit width for larger screens */
     }
 
     .logo {
       color: darkorange;
       font-size: 35px;
       font-weight: bold;
+      padding: 0;
     }
 
     .menu ul {
       display: flex;
       gap: 20px;
       list-style: none;
-     
     }
 
     .menu ul li a {
@@ -52,12 +63,13 @@
       color: orange;
     }
         
-    /* Admin Form Styling - SAME AS BEFORE */
+    /* Admin Form Styling */
     .content {
-      padding-top: 120px;
+      flex: 1; /* Push footer to bottom */
+      padding-top: 60px; /* Reduced top padding */
       display: flex;
       justify-content: center;
-      min-height: calc(100vh - 180px);
+      align-items: center;
     }
 
     .overlay_1 {
@@ -67,7 +79,6 @@
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
       width: 380px;
       text-align: center;
-      margin: 60px auto;
     }
 
     .imgcontainer {
@@ -125,12 +136,17 @@
       transform: scale(1.05);
     }
 
+    /* Footer - Adjusted */
     footer {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       text-align: center;
-      padding: 30px 0;  /* MORE GAP added */
-      margin-top: 100px; /* PUSH FOOTER DOWN MORE */
+      padding: 20px 0;
+      margin-top: auto; /* Stick to bottom */
+    }
+
+    footer p {
+      margin-bottom: 10px;
     }
 
     footer a {
@@ -141,6 +157,10 @@
 
     footer a:hover {
       color: orange;
+    }
+
+    .social-icons {
+      margin-top: 15px;
     }
 
     .social-icons a {
@@ -156,22 +176,23 @@
 </head>
 
 <body>
-
   <!-- Navbar -->
   <div class="navbar">
-    <div class="logo">H . V . U</div>
-    <div class="menu">
-      <ul>
-        <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
-        <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
-        <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
-        <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
-        <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
-      </ul>
+    <div class="navbar-container">
+      <div class="logo">H . V . U</div>
+      <div class="menu">
+        <ul>
+          <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
+          <li><a href="#"><i class="fa-solid fa-align-left"></i> ABOUT</a></li>
+          <li><a href="findstudent.jsp"><i class="fa-brands fa-usps"></i> PROFILE</a></li>
+          <li><a href="#"><i class="fa-solid fa-paintbrush"></i> ADMISSION</a></li>
+          <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- Admin Login Form (same as before) -->
+  <!-- Admin Login Form -->
   <div class="content">
     <div class="overlay_1">
       <form onsubmit="return adminLogin()">
@@ -194,7 +215,7 @@
       <a href="#">Terms of Service</a> |
       <a href="contact.jsp">Contact Us</a>
     </div>
-    <div class="social-icons" style="margin-top: 10px;">
+    <div class="social-icons">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
       <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
       <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
