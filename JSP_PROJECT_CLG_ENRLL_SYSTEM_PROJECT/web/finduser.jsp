@@ -253,10 +253,10 @@
                     <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
                 </ul>
             </div>
-            <div class="nav-right">
+<!--            <div class="nav-right">
                 <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
                 <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
-            </div>
+            </div>-->
         </div>
     </div>
 
