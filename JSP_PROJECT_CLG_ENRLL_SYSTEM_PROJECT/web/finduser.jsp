@@ -1,51 +1,43 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Student Login Help - College Enrollment System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html, body {
             height: 100%;
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- NAVBAR --- */
+        /* NAVBAR */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
             height: 75px;
-            width: 100%;
             background-color: rgba(0, 0, 0, 0.85);
             display: flex;
             align-items: center;
-            padding: 0 40px;
-            z-index: 1000;
-        }
-
-        .navbar-inner {
-            width: 100%;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
+            padding: 0 20px;
         }
 
         .logo {
             color: darkorange;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: bold;
-            flex-shrink: 0;
         }
 
-        .menu {
+        .nav-center {
             flex: 1;
             display: flex;
             justify-content: center;
@@ -54,14 +46,13 @@
         .menu ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 25px;
         }
 
         .menu ul li a {
             text-decoration: none;
             color: white;
             font-weight: bold;
-            font-size: 16px;
             transition: 0.3s;
         }
 
@@ -70,23 +61,24 @@
         }
 
         .nav-right {
-            flex-shrink: 0;
             display: flex;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .btn, .btn30 {
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
         }
 
         .btn {
             background: orange;
             color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            text-decoration: none;
         }
-
         .btn:hover {
             background: white;
             color: red;
@@ -95,101 +87,104 @@
         .btn30 {
             background-color: white;
             color: blue;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 15px;
-            font-size: 14px;
-            text-decoration: none;
         }
-
         .btn30:hover {
             background-color: blue;
             color: white;
         }
 
-        /* --- CONTENT --- */
+        /* CONTENT */
         .content {
-            margin-top: 75px;
-            min-height: calc(100vh - 75px - 60px);
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .container {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 650px;
+            max-width: 95%;
+            background: linear-gradient(to left, #0072ff, #00c6ff);
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
             text-align: center;
+            color: white;
+            backdrop-filter: blur(8px);
         }
 
         .container h2 {
-            color: #333;
-            font-size: 24px;
+            background-color: rgba(255, 165, 0, 0.9);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
             margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 1px 1px 3px black;
         }
 
         form {
-            margin: 20px auto;
+            margin: 20px 0;
         }
 
         label {
             font-size: 16px;
             font-weight: bold;
-            color: #333;
+            display: block;
+            margin-bottom: 10px;
         }
 
         input[type="text"] {
-            padding: 8px;
-            width: 220px;
+            padding: 10px;
+            width: 80%;
             border: 1px solid #ccc;
             border-radius: 5px;
             outline: none;
-            margin-top: 8px;
+            margin-bottom: 15px;
         }
 
         input[type="submit"] {
-            padding: 10px 18px;
+            padding: 10px 20px;
             border: none;
-            background-color: #ff9800;
+            background-color: orange;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
         }
 
         input[type="submit"]:hover {
             background-color: #e65100;
         }
 
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
         table {
             width: 100%;
-            margin-top: 20px;
+            margin-top: 15px;
             border-collapse: collapse;
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             color: black;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
 
         th, td {
-            padding: 12px;
+            padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
         }
 
         th {
-            background-color: #ff9800;
-            color: white;
-            font-size: 18px;
+            
+            color: blue;
         }
 
         .back-btn {
@@ -197,9 +192,9 @@
         }
 
         .back-btn button {
-            padding: 12px 25px;
-            color: white;
+            padding: 10px 20px;
             background-color: #3498db;
+            color: white;
             font-weight: bold;
             border-radius: 8px;
             border: none;
@@ -211,15 +206,17 @@
         }
 
         .back-btn a {
-            color: white;
             text-decoration: none;
+            color: white;
         }
 
+        /* FOOTER */
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
             text-align: center;
             padding: 20px 0;
+            margin-top: auto;
         }
 
         footer a {
@@ -233,17 +230,21 @@
         }
 
         footer .social-icons i {
-            margin: 0 10px;
+            margin: 0 8px;
             font-size: 20px;
+        }
+        
+        footer p{
+            
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <div class="navbar">
-        <div class="navbar-inner">
-            <div class="logo">H . V . U</div>
+        <div class="logo">H . V . U</div>
+        <div class="nav-center">
             <div class="menu">
                 <ul>
                     <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
@@ -253,23 +254,22 @@
                     <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
                 </ul>
             </div>
-<!--            <div class="nav-right">
-                <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-                <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
-            </div>-->
+        </div>
+        <div class="nav-right">
+            <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
+            <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
         </div>
     </div>
 
-    <!-- Page Content -->
+    <!-- CONTENT -->
     <div class="content">
         <div class="container">
-            <h2>🔍 Student Login Help</h2>
+            <h2> Student Login Help</h2>
             <form method="post">
-                <label for="lid">Enter Login ID:</label><br>
-                <input type="text" id="lid" name="lid" required>
+                <label for="lid">Enter Login ID:</label>
+                <input type="text" id="lid" name="lid" required><br>
                 <input type="submit" value="Search">
             </form>
-            <hr>
 
             <%
                 String lidStr = request.getParameter("lid");
@@ -278,15 +278,15 @@
                         int lid = Integer.parseInt(lidStr);
                         com.mohit.dao.UsersDAO studentDAO = new com.mohit.dao.UsersDAO();
                         com.mohit.bean.UsersBean student = studentDAO.findById(lid);
-
                         if (student.getLid() != 0) {
             %>
-                        <h3>Student Account Details</h3>
-                        <table>
-                            <tr><th>Name</th><td><%= student.getName() %></td></tr>
-                            <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
-                            <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
-                        </table>
+                <hr>
+                <h3>Student Account Details</h3>
+                <table>
+                    <tr><th>Name</th><td><%= student.getName() %></td></tr>
+                    <tr><th>Username</th><td><%= student.getUsername() %></td></tr>
+                    <tr><th>Password</th><td><%= student.getPassword() %></td></tr>
+                </table>
             <%
                         } else {
                             out.println("<p>❌ Student Not Found! Please check your ID.</p>");
@@ -296,14 +296,13 @@
                     }
                 }
             %>
-
             <div class="back-btn">
                 <button><a href="Index.jsp">🏠 Back to Home</a></button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
         <div>
@@ -318,6 +317,5 @@
             <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </footer>
-
 </body>
 </html>
