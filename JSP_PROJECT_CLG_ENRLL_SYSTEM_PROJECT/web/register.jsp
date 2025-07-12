@@ -213,6 +213,9 @@
         .social-icons a {
             margin: 0 10px;
         }
+        footer p{
+            margin: 20px;
+        }
     </style>
 </head>
 
