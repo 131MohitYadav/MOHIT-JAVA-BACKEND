@@ -117,13 +117,13 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding-top: 100px;
+            padding-top: 130px;  /* more space from navbar */
             padding-bottom: 40px;
         }
 
         .form {
             width: 90%;
-            max-width: 500px;
+            max-width: 650px;  /* wider form */
             background: rgba(0, 0, 0, 0.85);
             padding: 25px;
             border-radius: 12px;
