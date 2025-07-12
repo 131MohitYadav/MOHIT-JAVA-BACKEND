@@ -1,66 +1,65 @@
-<%-- 
-    Document   : registerFaculty
-    Created on : 1 Apr, 2025, 12:24:57 PM
-    Author     : yadav
---%>
-<%-- 
-    Document   : registerStudent
-    Created on : 26 Mar, 2025, 2:18:37 AM
-    Author     : yadav
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-           
-     <!-- FontAwesome Icons -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FACULTY ENROLLMENT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    
-          <style>
-              
-            
-               * {
+
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            height: 100%;
             font-family: Arial, sans-serif;
-            color: black;
-               background: linear-gradient(to right, #ff9966, #ff5e62);
-
         }
 
-        /* Navigation Bar */
+        body {
+            background: linear-gradient(to left, #ff9966, #ff5e62);  /* reversed gradient */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVBAR */
         .navbar {
-            margin:0px;
             width: 100%;
             height: 75px;
+            background-color: rgba(0, 0, 0, 0.85);
             display: flex;
             align-items: center;
-            justify-content: space-center;
-            padding: 0 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            gap:40px;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         .logo {
             color: darkorange;
-            font-size: 35px;
+            font-size: 28px;
             font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .menu {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .menu ul {
             display: flex;
             list-style: none;
-        }
-
-        .menu ul li {
-            margin: 0 20px;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
         }
 
         .menu ul li a {
@@ -74,119 +73,157 @@
             color: orange;
         }
 
-        /* Search Box */
-       
-        
-        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
 
-        .btn {
-            background: orange;
-            color: white;
+        .btn, .btn30 {
             border: none;
-            padding: 8px 15px;
             border-radius: 15px;
             cursor: pointer;
             font-weight: bold;
             font-size: 14px;
-        }
-        .btn30{
-            background-color: white;
-            color: blue;
-            font-weight: bold;
             padding: 8px 15px;
-            border-radius: 15px;
-            margin-left: 280px;
-            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn {
+            background: orange;
+            color: white;
         }
 
         .btn:hover {
             background: white;
             color: red;
         }
-        .btn30:hover{
-            background-color: blue;
-            color:white;
+
+        .btn30 {
+            background-color: white;
+            color: blue;
         }
 
-        
-   
-              
-       
-              
-              
-        .frm {
-            margin: auto;
-            width: 60%;
-            border-radius: 15px;
+        .btn30:hover {
+            background-color: blue;
+            color: white;
         }
-        
-        .frm h1{
-            text-shadow:2px 2px 5px black;
-            color: gray;
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+            padding-bottom: 40px;
+        }
+
+        .form {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
-            margin-top: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            width: 80%;
-            background-color: gray; /* Light Blue Background */
-            border-radius: 15px; /* Rounded Corners */
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow Effect */
-            overflow: hidden;
-        }
-        td {
+
+        .form h2 {
+            background: white;
+            color: black;
             padding: 12px;
-            text-align: center;
+            border-radius: 10px;
+            transition: 0.4s;
+            margin-bottom: 20px;
+        }
+
+        .form h2:hover {
+            background: orange;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: separate;
+            border-spacing: 10px;
+        }
+
+        td {
+            text-align: left;
+            color: #ddd;
             font-weight: bold;
         }
+
         input[type="text"] {
-            width: 95%;
+            width: 100%;
             padding: 10px;
-            border: none; /* No Border */
+            border: none;
             border-radius: 8px;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Inner Shadow */
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+            outline: none;
         }
+
         input[type="submit"] {
-            background-color: #007bff;
+            background-color: orange;
             font-weight: bold;
             color: white;
             padding: 12px;
-            border: none; /* No Border */
+            border: none;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Button Shadow */
+            margin-top: 10px;
             transition: 0.3s;
         }
+
         input[type="submit"]:hover {
-            background-color: #0056b3;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            background-color: white;
+            color: orange;
         }
-        
-        a{
-            text-decoration: none;
-        }
-        
-        .message{
+
+        .message {
             text-align: center;
             font-weight: bold;
-            color:green;
-            font-size: 10px;
+            color: green;
+            margin-top: 10px;
         }
-        
+
+        a {
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
-    
-    
-    
-    
-    
-     <!-- Navbar -->
+
+    <!-- NAVBAR -->
     <div class="navbar">
-        <div class="logo">H . V . U </div>
-        
+        <div class="logo">H . V . U</div>
         <div class="menu">
             <ul>
                 <li><a href="Index.jsp"><i class="fa-solid fa-home"></i> HOME</a></li>
@@ -196,98 +233,61 @@
                 <li><a href="help.jsp"><i class="fa-solid fa-address-book"></i> HELP</a></li>
             </ul>
         </div>
-        
-
-        
-<!--            <input class="srch" type="search" placeholder="Type To Search">-->
-<a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
-<a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
-
-    </div>
-
-
-    <div class="frm">
-        <h1>FACULTY ENROLLMENT FORM</h1>
-        <form action="fsave2.jsp">
-            <table>
-                <tr>
-                    <td>FID:</td>
-                    <td><input type="text" name="fid"></td>
-                </tr>
-                <tr>
-                    <td>NAME:</td>
-                    <td><input type="text" name="name"></td>
-                </tr>
-                 <tr>
-                    <td>GENDER:</td>
-                    <td><input type="text" name="gen"></td>
-                </tr>
-                <tr>
-                    <td>D.O.B:</td>
-                    <td><input type="text" name="dob"></td>
-                </tr>
-                <tr>
-                    <td>HIRE DATE:</td>
-                    <td><input type="text" name="hired"></td>
-                </tr>
-              
-                <tr>
-                    <td>EMAIL ID:</td>
-                    <td><input type="text" name="email"></td>
-                </tr>
-            
-                <tr>
-                    <td>DEPARTMENT NAME:</td>
-                    <td><input type="text" name="dept"></td>
-                </tr>
-                  <tr>
-                    <td>SALARY:</td>
-                    <td><input type="text" name="sal"></td>
-                </tr>
-                  <tr>
-                    <td> DESIGNATION:</td>
-                    <td><input type="text" name="desi"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="SUBMIT"></td>
-                </tr>
-            </table>
-        </form>
-        
-         <% 
-            String message = request.getParameter("message");
-            if ("success".equals(message)) { 
-        %>
-            <div class="message">Faculty Added Successfully! Redirecting to login...</div>
-            <script>
-                setTimeout(function() {
-                    window.location.href = 'Index.jsp';
-                }, 2000);
-            </script>
-        <% } %>
-    </div>
-    
-    
-  <!-- Footer Section -->
-<footer style="background-color: rgba(0, 0, 0, 0.9); color: white; text-align: center; padding: 20px 0; margin-top: 65px;">
-    <div style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
-        
-        <p style="margin: 10px 0; color:white;">&copy; 2025 H.V.U College. All Rights Reserved.</p>
-        
-        <div style="display: flex; gap: 15px;">
-            <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
-            <a href="#" style="color: white; text-decoration: none;">Terms of Service</a> |
-            <a href="contact.jsp" style="color: white; text-decoration: none;">Contact Us</a>
-        </div>
-
-        <div class="social-icons" style="margin-top: 10px;">
-            <a href="https://www.facebook.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.twitter.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" style="color: white; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
+        <div class="nav-buttons">
+            <a href="Facultylogin.jsp" class="btn30">FACULTY LOGIN</a>
+            <a href="Admin.jsp" class="btn">ADMIN LOGIN</a>
         </div>
     </div>
-</footer>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="form">
+            <h2>FACULTY ENROLLMENT FORM</h2>
+            <form action="fsave2.jsp">
+                <table>
+                    <tr><td>FID:</td><td><input type="text" name="fid"></td></tr>
+                    <tr><td>NAME:</td><td><input type="text" name="name"></td></tr>
+                    <tr><td>GENDER:</td><td><input type="text" name="gen"></td></tr>
+                    <tr><td>D.O.B:</td><td><input type="text" name="dob"></td></tr>
+                    <tr><td>HIRE DATE:</td><td><input type="text" name="hired"></td></tr>
+                    <tr><td>EMAIL ID:</td><td><input type="text" name="email"></td></tr>
+                    <tr><td>DEPARTMENT NAME:</td><td><input type="text" name="dept"></td></tr>
+                    <tr><td>SALARY:</td><td><input type="text" name="sal"></td></tr>
+                    <tr><td>DESIGNATION:</td><td><input type="text" name="desi"></td></tr>
+                    <tr><td colspan="2"><input type="submit" value="SUBMIT"></td></tr>
+                </table>
+            </form>
+
+            <% 
+                String message = request.getParameter("message");
+                if ("success".equals(message)) { 
+            %>
+                <div class="message">Faculty Added Successfully! Redirecting to login...</div>
+                <script>
+                    setTimeout(function() {
+                        window.location.href = 'Index.jsp';
+                    }, 2000);
+                </script>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div style="max-width: 100%; margin: auto; display: flex; flex-direction: column; align-items: center;">
+            <p>&copy; 2025 H.V.U College. All Rights Reserved.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="contact.jsp">Contact Us</a>
+            </div>
+            <div class="social-icons" style="margin-top: 10px;">
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-        
