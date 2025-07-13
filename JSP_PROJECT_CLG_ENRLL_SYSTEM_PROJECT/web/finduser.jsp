@@ -1,15 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.mohit.dao.UsersDAO" %>
-<%@ page import="com.mohit.bean.UsersBean" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Student Login Help - College Enrollment System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
     <style>
-        /* Styles same as original, cleaned up */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html, body {
             height: 100%;
             font-family: Arial, sans-serif;
@@ -17,6 +20,8 @@
             display: flex;
             flex-direction: column;
         }
+
+        /* NAVBAR */
         .navbar {
             height: 75px;
             background-color: rgba(0, 0, 0, 0.85);
@@ -25,32 +30,41 @@
             justify-content: space-between;
             padding: 0 20px;
         }
+
         .logo {
             color: darkorange;
             font-size: 30px;
             font-weight: bold;
         }
+
         .nav-center {
             flex: 1;
             display: flex;
             justify-content: center;
         }
+
         .menu ul {
             display: flex;
             list-style: none;
             gap: 25px;
         }
+
         .menu ul li a {
             text-decoration: none;
             color: white;
             font-weight: bold;
             transition: 0.3s;
         }
-        .menu ul li a:hover { color: orange; }
+
+        .menu ul li a:hover {
+            color: orange;
+        }
+
         .nav-right {
             display: flex;
             gap: 12px;
         }
+
         .btn, .btn30 {
             padding: 8px 15px;
             border-radius: 15px;
@@ -60,10 +74,26 @@
             border: none;
             cursor: pointer;
         }
-        .btn { background: orange; color: white; }
-        .btn:hover { background: white; color: red; }
-        .btn30 { background-color: white; color: blue; }
-        .btn30:hover { background-color: blue; color: white; }
+
+        .btn {
+            background: orange;
+            color: white;
+        }
+        .btn:hover {
+            background: white;
+            color: red;
+        }
+
+        .btn30 {
+            background-color: white;
+            color: blue;
+        }
+        .btn30:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        /* CONTENT */
         .main {
             display: flex;
             justify-content: center;
@@ -71,19 +101,21 @@
             flex: 1;
             padding: 20px;
         }
+
         .container {
             background: linear-gradient(to left, #0072ff, #00c6ff);
+            width: 100%;
             max-width: 650px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
         }
+
         .header-label {
-            background-color: rgba(255,165,0,0.9);
+            background-color: rgba(255, 165, 0, 0.9);
             color: white;
             padding: 12px;
             border-radius: 10px;
@@ -91,26 +123,30 @@
             font-size: 24px;
             text-shadow: 1px 1px 3px black;
         }
+
         form {
-            display: flex;
+             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
             width: 100%;
         }
+
         label {
-            font-size: 16px;
+          font-size: 16px;
             color: #333;
             font-weight: bold;
         }
+
         input[type="text"] {
-            padding: 10px;
+        padding: 10px;
             width: 80%;
             max-width: 300px;
             border: 1px solid #ccc;
             border-radius: 8px;
             outline: none;
         }
+
         input[type="submit"] {
             padding: 10px 20px;
             border: none;
@@ -121,12 +157,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        input[type="submit"]:hover { background-color: #e65100; }
+
+        input[type="submit"]:hover {
+            background-color: #e65100;
+        }
+
         hr {
             margin: 20px 0;
             border: none;
             border-top: 1px solid #ddd;
         }
+
         table {
             width: 100%;
             margin-top: 15px;
@@ -137,25 +178,42 @@
             color: black;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
+
         th, td {
             padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
         }
-        th { color: blue; }
+
+        th {
+            
+            color: blue;
+        }
+
         .back-btn {
             margin-top: 20px;
         }
-        .back-btn a {
-            display: inline-block;
+
+        .back-btn button {
             padding: 10px 20px;
             background-color: #3498db;
             color: white;
             font-weight: bold;
             border-radius: 8px;
-            text-decoration: none;
+            border: none;
+            cursor: pointer;
         }
-        .back-btn a:hover { background-color: #1e88e5; }
+
+        .back-btn button:hover {
+            background-color: #1e88e5;
+        }
+
+        .back-btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* FOOTER */
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
@@ -163,13 +221,26 @@
             padding: 20px 0;
             margin-top: auto;
         }
+
         footer a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
         }
-        footer a:hover { color: orange; }
-        footer .social-icons i { margin: 0 8px; font-size: 20px; }
+
+        footer a:hover {
+            color: orange;
+        }
+
+        footer .social-icons i {
+            margin: 0 8px;
+            font-size: 20px;
+        }
+        
+        footer p{
+            
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -196,10 +267,10 @@
     <!-- CONTENT -->
     <div class="main">
         <div class="container">
-            <h2 class="header-label">Student Login Help</h2>
+            <h2 class ="header-label"> Student Login Help</h2>
             <form method="post">
                 <label for="lid">Enter Login ID:</label>
-                <input type="text" id="lid" name="lid" required>
+                <input type="text" id="lid" name="lid" required><br>
                 <input type="submit" value="Search">
             </form>
 
@@ -208,8 +279,8 @@
                 if (lidStr != null && !lidStr.isEmpty()) {
                     try {
                         int lid = Integer.parseInt(lidStr);
-                        UsersDAO studentDAO = new UsersDAO();
-                        UsersBean student = studentDAO.findById(lid);
+                        com.mohit.dao.UsersDAO studentDAO = new com.mohit.dao.UsersDAO();
+                        com.mohit.bean.UsersBean student = studentDAO.findById(lid);
                         if (student.getLid() != 0) {
             %>
                 <hr>
@@ -229,7 +300,7 @@
                 }
             %>
             <div class="back-btn">
-                <a href="Index.jsp">Back to Home</a>
+                <button><a href="Index.jsp"> Back to Home</a></button>
             </div>
         </div>
     </div>
@@ -242,7 +313,7 @@
             <a href="#">Terms of Service</a> |
             <a href="contact.jsp">Contact Us</a>
         </div>
-        <div class="social-icons">
+        <div class="social-icons" style="margin-top: 10px;">
             <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
