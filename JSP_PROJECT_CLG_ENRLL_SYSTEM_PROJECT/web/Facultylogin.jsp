@@ -101,7 +101,7 @@
 
         /* Form styling */
         .form {
-            width: 360px;
+            width: 390px;
             background: rgba(0, 0, 0, 0.85);
             padding: 25px;
             border-radius: 10px;
